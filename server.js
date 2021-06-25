@@ -1,3 +1,4 @@
+/* eslint-disable import/newline-after-import */
 /* eslint-disable no-console */
 /* eslint-disable prettier/prettier */
 /* eslint-disable node/no-extraneous-require */
@@ -9,7 +10,8 @@ const app = require('./app');
 
 // console.log(process.env);
 const DB = process.env.DATABASE.replace(
-  '<PASSWORD>', process.env.DATABASE_PASSWORD
+  '<PASSWORD>',
+  process.env.DATABASE_PASSWORD
 );
 
 mongoose
