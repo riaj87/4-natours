@@ -1,8 +1,16 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable import/no-useless-path-segments */
+/* eslint-disable import/newline-after-import */
 const express = require('express');
 const tourController = require('./../controllers/tourController');
 const router = express.Router();
 
 // router.param('id', tourController.checkId);
+// eslint-disable-next-line prettier/prettier
+router
+  .route('/top-5-cheap')
+  .get(tourController.aliasTopTours, tourController.getAllTours);
+
 router
   .route('/')
   .get(tourController.getAllTours)

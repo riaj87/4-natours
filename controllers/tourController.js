@@ -4,6 +4,13 @@
 /* eslint-disable prettier/prettier */
 const Tour = require('../Models/tourModel');
 
+exports.aliasTopTours = (req, res, next) => {
+  req.query.limit = '5';
+  req.query.sort = '-ratingsAverage,price';
+  req.query.fields = 'name,price,ratingsAverage,summary,difficulty';
+  next();
+};
+
 //  const fs = require('fs');
 
 // const tours = JSON.parse(
@@ -64,7 +71,7 @@ exports.getAllTours = async (req, res) => {
       query = query.select('-__v');
     }
 
-    // 4) Pagination 
+    // 4) Pagination
     const page = req.query.page * 1 || 1;
     const limit = req.query.limit * 1 || 100;
     const skip = (page - 1) * limit;
