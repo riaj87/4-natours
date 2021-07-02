@@ -1,12 +1,21 @@
+/* eslint-disable import/no-useless-path-segments */
 /* eslint-disable prettier/prettier */
 /* eslint-disable no-console */
-exports.getAllUsers = (req, res) => {
-  res.status(500).json({
-    status: 'error',
-    // eslint-disable-next-line prettier/prettier
-    message: 'This route is not yet defined!',
+
+const User = require('../Models/userModel');
+const catchAsync = require('./../utils/catchAsync');
+
+exports.getAllUsers = catchAsync(async (req, res, next) => {
+  const users = await User.find();
+  // SEND RESPONSE
+  res.status(200).json({
+    status: 'success',
+    results: users.length,
+    data: {
+      users,
+    },
   });
-};
+});
 
 exports.createUser = (req, res) => {
   console.log(req.requestTime);
