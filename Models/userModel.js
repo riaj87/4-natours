@@ -1,3 +1,4 @@
+/* eslint-disable prefer-template */
 /* eslint-disable no-undef */
 /* eslint-disable node/no-extraneous-require */
 /* eslint-disable prettier/prettier */
@@ -50,10 +51,8 @@ userSchema.pre('save', async function (next) {
   this.passwordConfirm = undefined;
   next();
 });
-userSchema.methods.correctPassword = async function (
-  candidatePassword,
-  userPassword
-) {
+
+userSchema.methods.correctPassword = async function (candidatePassword, userPassword) {
   return await bcrypy.compare(candidatePassword, userPassword);
 };
 const User = mongoose.model('User', userSchema);
